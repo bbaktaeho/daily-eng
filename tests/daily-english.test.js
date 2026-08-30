@@ -48,3 +48,15 @@ test('page is designed to use KST and reschedule at midnight', () => {
   assert.match(source, /localStorage/);
   assert.match(source, /renderCourseTabs/);
 });
+
+test('text is auto-fitted into fixed boxes on render and resize', () => {
+  const source = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+  const markup = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.match(source, /function fitAll/);
+  assert.match(source, /renderCourseTabs\(\);fitAll\(\)/);
+  assert.match(source, /addEventListener\('resize',fitAll\)/);
+  for (const id of ['sentence-box', 'translation-box', 'reply-box', 'reply-ko-box']) {
+    assert.ok(markup.includes(`id="${id}"`), `missing fit box: ${id}`);
+  }
+  assert.match(markup, /html,body\{height:100%;overflow:hidden\}/);
+});

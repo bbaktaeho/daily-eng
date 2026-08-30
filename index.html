@@ -1,25 +1,30 @@
 <!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Daily English</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
 body{margin:0;background:#fffdf9;color:#37352f;font-family:"Inter","Noto Sans KR",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-main{max-width:2400px;min-height:100vh;margin:auto;padding:44px clamp(22px,3.5vw,80px) 52px;display:flex;flex-direction:column}
-section{flex:1;display:flex;flex-direction:column}
-.meta{display:flex;justify-content:space-between;color:#9b9a97;font-size:clamp(13px,1vw,18px);letter-spacing:.02em}
-.tabs{display:flex;gap:12px;margin:44px 0 68px;overflow:auto}
+main{height:100dvh;max-width:2400px;margin:auto;padding:clamp(14px,2.2vh,36px) clamp(18px,3vw,72px) clamp(12px,1.8vh,28px);display:flex;flex-direction:column;gap:clamp(6px,1.1vh,18px)}
+.meta{display:flex;justify-content:space-between;color:#9b9a97;font-size:clamp(12px,1.5vh,20px);letter-spacing:.02em}
+.tabs{display:flex;gap:clamp(6px,.9vh,14px);overflow:hidden}
 .tab,.next{border:0;border-radius:10px;cursor:pointer;font:inherit}
-.tab{padding:clamp(14px,1.2vw,22px) clamp(20px,2vw,40px);background:transparent;color:#787774;font-size:clamp(16px,1.3vw,24px);white-space:nowrap}
+.tab{padding:clamp(9px,1.7vh,24px) clamp(18px,2vw,44px);background:transparent;color:#787774;font-size:clamp(15px,2.1vh,30px);white-space:nowrap}
 .tab[aria-selected="true"]{background:#eeece8;color:#37352f;font-weight:600}
-.eyebrow{font-size:clamp(13px,1vw,18px);color:#9b9a97;margin-bottom:18px;letter-spacing:.04em}
-.sentence{font-family:"Playfair Display",Georgia,serif;font-size:clamp(44px,7vw,132px);font-weight:500;letter-spacing:-.035em;line-height:1.06;margin:0}
-.translation{font-size:clamp(18px,1.7vw,34px);line-height:1.6;color:#787774;margin:28px 0 0}
-.reply{margin-top:auto;border-top:1px solid #e9e7e3;padding-top:32px}
-.label{font-size:clamp(12px,.95vw,17px);font-weight:700;letter-spacing:.08em;color:#9b9a97}
-.reply p{font-size:clamp(22px,2.6vw,52px);line-height:1.35;margin:14px 0 8px}
-.reply .ko{font-size:clamp(16px,1.4vw,28px);color:#787774}
-.expression{margin-top:52px;margin-bottom:36px;padding:24px 0;border-top:1px solid #e9e7e3;border-bottom:1px solid #e9e7e3;font-size:clamp(16px,1.4vw,28px)}
-.expression b{margin-right:14px}
+section{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(4px,.8vh,14px)}
+.eyebrow{font-size:clamp(12px,1.5vh,20px);color:#9b9a97;letter-spacing:.04em}
+.fit{min-height:0;overflow:hidden;display:flex;align-items:center}
+.fit>*{margin:0;width:100%}
+#sentence-box{flex:34}
+#translation-box{flex:8}
+#reply-box{flex:12}
+#reply-ko-box{flex:7}
+.sentence{font-family:"Playfair Display",Georgia,serif;font-size:clamp(34px,8vh,132px);font-weight:500;letter-spacing:-.035em;line-height:1.06}
+.translation{font-size:clamp(16px,2.6vh,36px);line-height:1.5;color:#787774}
+.label{font-size:clamp(11px,1.4vh,18px);font-weight:700;letter-spacing:.08em;color:#9b9a97;border-top:1px solid #e9e7e3;padding-top:clamp(10px,1.6vh,26px);margin-top:clamp(4px,.8vh,14px)}
+#reply{font-size:clamp(20px,3.6vh,52px);line-height:1.3}
+.ko{font-size:clamp(15px,2.2vh,30px);line-height:1.45;color:#787774}
+.expression{padding:clamp(10px,1.6vh,24px) 0;margin-top:clamp(4px,.8vh,14px);border-top:1px solid #e9e7e3;border-bottom:1px solid #e9e7e3;font-size:clamp(15px,2.2vh,30px);overflow:hidden}
+.expression b{margin-right:clamp(8px,1vw,18px)}
 .expression span{color:#787774}
-.next{width:100%;min-height:clamp(62px,6vw,108px);margin-top:0;background:#37352f;color:white;font-weight:600;font-size:clamp(16px,1.5vw,28px)}
+.next{width:100%;height:clamp(56px,9vh,120px);flex:none;margin-top:clamp(8px,1.4vh,24px);background:#37352f;color:white;font-weight:600;font-size:clamp(16px,2.4vh,32px)}
 .next:active,.tab:active{transform:scale(.985)}
-.footer{margin-top:18px;text-align:right;color:#9b9a97;font-size:clamp(13px,1vw,18px)}
-@media(max-width:650px){main{padding:25px 22px}.tabs{margin:34px 0 52px}.sentence{font-size:46px}.translation{font-size:18px;margin-bottom:44px}.reply p{font-size:21px}}
-</style></head><body><main><header class="meta"><span>ONE SENTENCE A DAY</span><span id="date"></span></header><nav class="tabs" id="tabs" aria-label="학습 카테고리"></nav><section><div class="eyebrow" id="count"></div><h1 class="sentence" id="sentence"></h1><p class="translation" id="translation"></p><div class="reply"><div class="label">LIKELY REPLY</div><p id="reply"></p><div class="ko" id="reply-ko"></div></div><div class="expression"><b id="expression"></b><span id="expression-ko"></span></div><button class="next" id="next">다음 문장 →</button><div class="footer" id="progress"></div></section></main><script src="app.js"></script></body></html>
+.footer{margin-top:clamp(4px,.8vh,14px);text-align:right;color:#9b9a97;font-size:clamp(12px,1.5vh,20px)}
+</style></head><body><main><header class="meta"><span>ONE SENTENCE A DAY</span><span id="date"></span></header><nav class="tabs" id="tabs" aria-label="학습 카테고리"></nav><section><div class="eyebrow" id="count"></div><div class="fit" id="sentence-box"><h1 class="sentence" id="sentence"></h1></div><div class="fit" id="translation-box"><p class="translation" id="translation"></p></div><div class="label">LIKELY REPLY</div><div class="fit" id="reply-box"><p id="reply"></p></div><div class="fit" id="reply-ko-box"><div class="ko" id="reply-ko"></div></div><div class="expression"><b id="expression"></b><span id="expression-ko"></span></div><button class="next" id="next">다음 문장 →</button><div class="footer" id="progress"></div></section></main><script src="app.js"></script></body></html>

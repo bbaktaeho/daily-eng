@@ -41,6 +41,29 @@ test('provides two expandable 300-lesson conversation courses', () => {
   }
 });
 
+test('lessons are unique, spread out, and free of particle errors', () => {
+  const { courses } = loadApp();
+  const BAD_PARTICLE = [/을 있나요/, /를 있나요/, /을 가능/, /를 가능/, /을 필요/, /를 필요/, /이 받을/, /가 받을/, /을을/, /를를/];
+
+  for (const [name, course] of Object.entries(courses)) {
+    const lessons = course.lessons;
+    assert.equal(new Set(lessons.map((l) => l.sentence)).size, lessons.length, `${name}: duplicate sentence`);
+
+    const lastSeen = new Map();
+    lessons.forEach((lesson, i) => {
+      for (const bad of BAD_PARTICLE) {
+        assert.doesNotMatch(lesson.translation, bad, `${name} #${i}: ${lesson.translation}`);
+      }
+      const seen = lastSeen.get(lesson.key);
+      if (seen !== undefined) assert.ok(i - seen >= 30, `${name}: topic "${lesson.key}" repeats after ${i - seen} days`);
+      lastSeen.set(lesson.key, i);
+      if (i > 0) assert.notEqual(lesson.key, lessons[i - 1].key, `${name} #${i}: same topic two days in a row`);
+    });
+
+    assert.ok(new Set(lessons.map((l) => l.reply)).size >= 10, `${name}: replies are not varied enough`);
+  }
+});
+
 test('page is designed to use KST and reschedule at midnight', () => {
   const source = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
   assert.match(source, /timeZone:\s*['"]Asia\/Seoul['"]/);

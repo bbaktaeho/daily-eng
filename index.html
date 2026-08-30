@@ -1,3 +1,25 @@
-<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Daily English</title><style>
-*{box-sizing:border-box}body{margin:0;background:#fffdf9;color:#37352f;font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}main{max-width:1120px;min-height:100vh;margin:auto;padding:42px 54px 36px}.meta{display:flex;justify-content:space-between;color:#9b9a97;font-size:13px}.tabs{display:flex;gap:8px;margin:48px 0 72px;overflow:auto}.tab,.next{border:0;border-radius:7px;cursor:pointer;font:inherit}.tab{padding:13px 18px;background:transparent;color:#787774;font-size:15px;white-space:nowrap}.tab[aria-selected="true"]{background:#eeece8;color:#37352f;font-weight:600}.eyebrow{font-size:13px;color:#9b9a97;margin-bottom:16px}.sentence{font-family:Georgia,"Noto Serif KR",serif;font-size:clamp(44px,6.4vw,86px);font-weight:500;letter-spacing:-.045em;line-height:1.08;margin:0;max-width:1000px}.translation{font-size:20px;line-height:1.7;color:#787774;margin:24px 0 64px}.reply{border-top:1px solid #e9e7e3;padding-top:28px;max-width:850px}.label{font-size:12px;font-weight:700;letter-spacing:.08em;color:#9b9a97}.reply p{font-size:25px;line-height:1.45;margin:11px 0 6px}.reply .ko{font-size:16px;color:#787774}.expression{margin-top:48px;padding:20px 0;border-top:1px solid #e9e7e3;border-bottom:1px solid #e9e7e3;font-size:16px}.expression b{margin-right:10px}.expression span{color:#787774}.next{width:100%;min-height:62px;margin-top:32px;background:#37352f;color:white;font-weight:600;font-size:16px}.next:active,.tab:active{transform:scale(.985)}.footer{margin-top:16px;text-align:right;color:#9b9a97;font-size:13px}@media(max-width:650px){main{padding:25px 22px}.tabs{margin:34px 0 52px}.sentence{font-size:46px}.translation{font-size:18px;margin-bottom:44px}.reply p{font-size:21px}}
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Daily English</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box}
+body{margin:0;background:#fffdf9;color:#37352f;font-family:"Inter","Noto Sans KR",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:2400px;min-height:100vh;margin:auto;padding:44px clamp(22px,3.5vw,80px) 52px;display:flex;flex-direction:column}
+section{flex:1;display:flex;flex-direction:column}
+.meta{display:flex;justify-content:space-between;color:#9b9a97;font-size:clamp(13px,1vw,18px);letter-spacing:.02em}
+.tabs{display:flex;gap:12px;margin:44px 0 68px;overflow:auto}
+.tab,.next{border:0;border-radius:10px;cursor:pointer;font:inherit}
+.tab{padding:clamp(14px,1.2vw,22px) clamp(20px,2vw,40px);background:transparent;color:#787774;font-size:clamp(16px,1.3vw,24px);white-space:nowrap}
+.tab[aria-selected="true"]{background:#eeece8;color:#37352f;font-weight:600}
+.eyebrow{font-size:clamp(13px,1vw,18px);color:#9b9a97;margin-bottom:18px;letter-spacing:.04em}
+.sentence{font-family:"Playfair Display",Georgia,serif;font-size:clamp(44px,7vw,132px);font-weight:500;letter-spacing:-.035em;line-height:1.06;margin:0}
+.translation{font-size:clamp(18px,1.7vw,34px);line-height:1.6;color:#787774;margin:28px 0 0}
+.reply{margin-top:auto;border-top:1px solid #e9e7e3;padding-top:32px}
+.label{font-size:clamp(12px,.95vw,17px);font-weight:700;letter-spacing:.08em;color:#9b9a97}
+.reply p{font-size:clamp(22px,2.6vw,52px);line-height:1.35;margin:14px 0 8px}
+.reply .ko{font-size:clamp(16px,1.4vw,28px);color:#787774}
+.expression{margin-top:52px;margin-bottom:36px;padding:24px 0;border-top:1px solid #e9e7e3;border-bottom:1px solid #e9e7e3;font-size:clamp(16px,1.4vw,28px)}
+.expression b{margin-right:14px}
+.expression span{color:#787774}
+.next{width:100%;min-height:clamp(62px,6vw,108px);margin-top:0;background:#37352f;color:white;font-weight:600;font-size:clamp(16px,1.5vw,28px)}
+.next:active,.tab:active{transform:scale(.985)}
+.footer{margin-top:18px;text-align:right;color:#9b9a97;font-size:clamp(13px,1vw,18px)}
+@media(max-width:650px){main{padding:25px 22px}.tabs{margin:34px 0 52px}.sentence{font-size:46px}.translation{font-size:18px;margin-bottom:44px}.reply p{font-size:21px}}
 </style></head><body><main><header class="meta"><span>ONE SENTENCE A DAY</span><span id="date"></span></header><nav class="tabs" id="tabs" aria-label="학습 카테고리"></nav><section><div class="eyebrow" id="count"></div><h1 class="sentence" id="sentence"></h1><p class="translation" id="translation"></p><div class="reply"><div class="label">LIKELY REPLY</div><p id="reply"></p><div class="ko" id="reply-ko"></div></div><div class="expression"><b id="expression"></b><span id="expression-ko"></span></div><button class="next" id="next">다음 문장 →</button><div class="footer" id="progress"></div></section></main><script src="app.js"></script></body></html>
